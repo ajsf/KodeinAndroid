@@ -74,6 +74,6 @@ class PhotosListActivity : InjectedActivity(), PhotoListPresenter.View {
     }
 
     override fun displayLoadingPhotosError() {
-        Snackbar.make(toolbar, R.string.loading_photo_error, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(toolbar, R.string.loading_photos_error, Snackbar.LENGTH_SHORT).show()
     }
 }

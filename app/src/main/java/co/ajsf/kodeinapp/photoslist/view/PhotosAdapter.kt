@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.ajsf.kodeinapp.R
 import co.ajsf.kodeinapp.common.domain.model.Photo
-import kotlinx.android.synthetic.main.activity_photo_list.view.*
+import co.ajsf.kodeinapp.common.view.load
 import kotlinx.android.synthetic.main.item_photo.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,7 +41,7 @@ class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
         fun bind(photo: Photo) {
             with(itemView) {
                 cell.setOnClickListener { onItemClick?.invoke(photo.id) }
-                picture.loading
+                picture.load(photo.url)
                 title.text = photo.author
                 unsplashLink.text = itemView.resources.getString(R.string.unsplash)
                 val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault()).parse(photo.created_at)

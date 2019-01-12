@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+def propertiesFile = file('../unsplash.properties')
+def props = new Properties()
+props.load(new FileInputStream(propertiesFile))
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -13,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', "apiKey", props['apiKey']
     }
     buildTypes {
         release {
@@ -41,7 +46,7 @@ dependencies {
     implementation "io.arrow-kt:arrow-data:$arrow_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    implementation ("com.squareup.picasso:picasso:$picasso_version") {
+    implementation("com.squareup.picasso:picasso:$picasso_version") {
         exclude group: 'com.android.support', module: 'exifinterface'
     }
     // network

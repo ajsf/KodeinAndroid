@@ -79,7 +79,7 @@ class DetailActivity : InjectedActivity(), DetailPresenter.View {
         shareIntent.action = "android.intent.action.SEND"
         shareIntent.putExtra("android.intent.extra.STREAM", share)
         shareIntent.type = "image/jpeg"
-        //startActivity(Intent.createChooser(shareIntent, "Share"))
+        startActivity(Intent.createChooser(shareIntent, "Share"))
     }
 
     override fun renderPhoto(photo: Photo) {

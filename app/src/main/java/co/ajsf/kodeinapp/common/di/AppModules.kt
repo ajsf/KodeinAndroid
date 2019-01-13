@@ -11,6 +11,8 @@ import co.ajsf.kodeinapp.common.domain.interactor.Invoker
 import co.ajsf.kodeinapp.common.domain.interactor.UseCaseInvoker
 import co.ajsf.kodeinapp.common.domain.repository.PhotosLocalDataSource
 import co.ajsf.kodeinapp.common.domain.repository.PhotosNetworkDataSource
+import co.ajsf.kodeinapp.common.router.Navigator
+import co.ajsf.kodeinapp.common.router.PhotoAppNavigator
 import co.ajsf.kodeinapp.logger.AndroidLogger
 import co.ajsf.kodeinapp.logger.Logger
 import co.ajsf.kodeinapp.photoslist.domain.repository.PhotosRepository
@@ -24,8 +26,10 @@ import java.util.concurrent.TimeUnit
 
 fun appModule(appContext: Context) = Kodein.Module("appModule") {
     bind<Context>() with provider { appContext }
+    bind<Navigator>() with provider { PhotoAppNavigator(instance()) }
     bind<Logger>() with singleton { AndroidLogger() }
     bind<Invoker>() with singleton { UseCaseInvoker() }
+
     import(photosAppModule())
     import(httpAppModule())
 }

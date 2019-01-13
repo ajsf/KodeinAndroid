@@ -5,12 +5,13 @@ import co.ajsf.kodeinapp.common.domain.error.Error
 import co.ajsf.kodeinapp.common.domain.interactor.Invoker
 import co.ajsf.kodeinapp.common.domain.model.Photo
 import co.ajsf.kodeinapp.common.presenter.BasePresenter
+import co.ajsf.kodeinapp.common.router.Navigator
 import co.ajsf.kodeinapp.photoslist.domain.interactor.GetPhotos
 
 class PhotoListPresenter(
     private val invoker: Invoker,
-    private val getPhotos: GetPhotos
-    //private val navigator: Navigator
+    private val getPhotos: GetPhotos,
+    private val navigator: Navigator
 ) : BasePresenter<PhotoListPresenter.View>() {
 
     interface View : BasePresenter.View {
@@ -39,6 +40,6 @@ class PhotoListPresenter(
     }
 
     fun onPhotoClick(photoId: String) {
-        //navigator.goToDetail(photoId)
+        navigator.goToDetail(photoId)
     }
 }

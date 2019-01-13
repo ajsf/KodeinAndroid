@@ -10,5 +10,6 @@ class GetPhotos(private val photosRepository: PhotosRepository) :
     UseCase<GetPhotos.Params, List<Photo>>() {
 
     override fun run(params: Params): Either<Error, List<Photo>> = photosRepository.getAll()
+
     data class Params(val page: Int, val query: String)
 }
